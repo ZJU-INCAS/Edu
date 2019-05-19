@@ -8,9 +8,13 @@ import { ThemeProvider } from '@material-ui/styles'
 import { getTheme } from '@/theme'
 
 import Router from '@/router'
+import TopBar from '@/components/TopBar'
 
 const App = () => (
+  <>
+    <TopBar />
     <Router />
+  </>
 )
 
 const Root = () => {

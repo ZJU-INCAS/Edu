@@ -5,7 +5,7 @@ interface IHost {
 
 const host: IHost = {
   oauth: process.env.oauth || '',
-  api: process.env.api || ''
+  api: 'http://10.214.144.223:8081'
 }
 
 export default host
