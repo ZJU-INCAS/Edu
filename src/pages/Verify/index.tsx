@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useFetcher from '@/hooks/useFetcher'
-import { getResources } from '@/services/resource'
+import { getVerifyList } from '@/services/verify'
 import List from './list'
 import styled from 'styled-components'
 import useModel from '@/hooks/useModel'
@@ -16,6 +16,17 @@ const Center = styled.div`
 
 export default () => {
   const { isLogIn, type } = useModel(stateModel, ['isLogIn', 'type'])
-  const [resources] = useFetcher(() => getResources(type))
-  return resources ? <Center><List list={resources} /></Center> : null
+  const [list, setList] = React.useState<Array<any>>([])
+
+  const getList = async () => {
+    const res =  await getVerifyList()
+    res.map((l:any)=>{
+      setList(l)
+    })
+  }
+
+  useEffect(()=>{
+    getList()
+  }, [])
+  return list ? <Center><List list={list} callback={getList}/></Center> : null
 }

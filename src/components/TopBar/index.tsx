@@ -12,11 +12,8 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 import { createStyles, Theme, withStyles, WithStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import MoreIcon from '@material-ui/icons/MoreVert';
-import {navigate} from '@reach/router'
+import { navigate, Link } from '@reach/router'
+import User from './user'
 
 const styles = (theme: any) =>
   createStyles({
@@ -87,6 +84,11 @@ const styles = (theme: any) =>
         display: 'none',
       },
     },
+    menu: {
+      root:{
+        width: '4rem'
+      }
+    }
   });
 
 export interface Props extends WithStyles<typeof styles> { }
@@ -127,13 +129,15 @@ class PrimarySearchAppBar extends React.Component<Props, State> {
 
     const renderMenu = (
       <Menu
+        className={classes.menu}
         anchorEl={anchorEl}
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
-        <MenuItem onClick={()=>navigate('/resource')}>资源中心</MenuItem>
+        <MenuItem onClick={() => { navigate('/resource'); this.handleMenuClose();} }>资源中心</MenuItem>
+        <MenuItem onClick={() => { navigate('/myResource'); this.handleMenuClose(); }}>我的资源</MenuItem>
       </Menu>
     );
 
@@ -174,14 +178,7 @@ class PrimarySearchAppBar extends React.Component<Props, State> {
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton
-                aria-owns={isProfileMenuOpen ? 'material-appbar' : undefined}
-                aria-haspopup="true"
-                color="inherit"
-                onClick={this.handleProfileMenuOpen}
-              >
-                <AccountCircle />
-              </IconButton>
+             <User />
             </div>
           </Toolbar>
         </AppBar>

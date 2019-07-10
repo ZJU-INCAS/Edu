@@ -24,6 +24,7 @@
     "@material-ui/icons": "^4.0.0-alpha.1",
     "@material-ui/styles": "^4.0.0-alpha.4",
     "@reach/router": "^1.2.1",
+    "async-validator": "^1.11.3",
     "classnames": "^2.2.6",
     "cropperjs": "^1.5.1",
     "dayjs": "^1.8.10",

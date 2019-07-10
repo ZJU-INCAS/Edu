@@ -3,7 +3,11 @@ import React from 'react'
 import { Router, RouteComponentProps, WindowLocation } from '@reach/router'
 
 import Home from '@/pages/Home'
+import Login from '@/pages/Login'
 import Resource from '@/pages/Resource'
+import MyResource from '@/pages/MyResource'
+import Upload from '@/pages/Upload'
+import VerifyList from '@/pages/Verify'
 
 export const Route: React.FC<
   RouteComponentProps & {
@@ -24,7 +28,11 @@ export interface ILocation {
 const MyRouter: React.FC<ILocation> = ({ location }) => (
   <Router location={location}>
     <Route path="/" component={Home} />
+    <Route path="/login" component={Login} />
     <Route path='/resource' component={Resource} />
+    <Route path='/myResource' component={MyResource} />
+    <Route path='/upload' component={Upload} />
+    <Route path='/verifyList' component={VerifyList} />
   </Router>
 )
 

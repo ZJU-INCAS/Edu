@@ -76,7 +76,7 @@ export async function GET<T>(url: string, options: GETOptions = {}) {
   if (!options.noAuthorization) {
     const accessToken = await getAccessToken()
     if (accessToken) {
-      headers.append('Authorization', accessToken)
+      headers.append('token', accessToken)
     }
   }
 
@@ -116,7 +116,7 @@ export async function POST<T = void>(url: string, options: POSTOptions = {}) {
   if (!options.noAuthorization) {
     const accessToken = await getAccessToken()
     if (accessToken) {
-      headers.append('Authorization', accessToken)
+      headers.append('token', accessToken)
     }
   }
 
